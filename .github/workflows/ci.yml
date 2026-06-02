@@ -11,18 +11,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Check if package.json exists
+        id: check_pkg
+        run: |
+          if [ -f "package.json" ]; then
+            echo "has_package=true" >> $GITHUB_OUTPUT
+            echo "✓ package.json found — running tests"
+          else
+            echo "has_package=false" >> $GITHUB_OUTPUT
+            echo "⚠ No package.json yet — skipping tests"
+          fi
+
       - uses: actions/setup-node@v4
+        if: steps.check_pkg.outputs.has_package == 'true'
         with:
           node-version: '20'
 
       - name: Install dependencies
+        if: steps.check_pkg.outputs.has_package == 'true'
         run: npm install
 
       - name: Type check
+        if: steps.check_pkg.outputs.has_package == 'true'
         run: npm run typecheck --if-present
 
       - name: Unit tests
+        if: steps.check_pkg.outputs.has_package == 'true'
         run: npm run test:unit --if-present
 
       - name: Contract tests
+        if: steps.check_pkg.outputs.has_package == 'true'
         run: npm run test:contract --if-present
+
+      - name: No code yet
+        if: steps.check_pkg.outputs.has_package == 'false'
+        run: echo "✓ No application code yet — CI passed"
