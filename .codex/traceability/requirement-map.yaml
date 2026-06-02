@@ -1,0 +1,10 @@
+# Requirement ID registry — next number per area
+# Update this when creating a new REQ
+
+AUTH: 0001   # next: REQ-AUTH-0002
+PROJ: 0001   # next: REQ-PROJ-0002
+TASK: 0001   # next: REQ-TASK-0002
+TEAM: 0001   # next: REQ-TEAM-0002
+DASH: 0001   # next: REQ-DASH-0002
+INFRA: 0000  # next: REQ-INFRA-0001
+DOCS: 0000   # next: REQ-DOCS-0001

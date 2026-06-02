@@ -1,0 +1,24 @@
+# Component ownership registry
+# One owner per component during active development
+
+CMP-AUTH-REGISTER-HANDLER:
+  owner: developer-1
+  files: [apps/taskflow-api/src/auth/register.ts]
+  status: in-progress
+
+CMP-AUTH-LOGIN-HANDLER:
+  owner: developer-1
+  files: [apps/taskflow-api/src/auth/login.ts]
+  status: in-progress
+
+CMP-AUTH-TOKEN-VALIDATOR:
+  owner: developer-1
+  files:
+    - apps/taskflow-api/src/middleware/auth-guard.ts
+    - packages/shared-auth/src/token-validator.ts
+  status: in-progress
+
+CMP-AUTH-REFRESH-HANDLER:
+  owner: developer-1
+  files: [apps/taskflow-api/src/auth/refresh.ts]
+  status: in-progress

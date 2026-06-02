@@ -1,0 +1,18 @@
+# Test ID registry — next number per area and type
+
+AUTH:
+  UNIT:     0001   # next: TEST-AUTH-UNIT-0002
+  CONTRACT: 0001   # next: TEST-AUTH-CONTRACT-0002
+  SECURITY: 0001   # next: TEST-AUTH-SECURITY-0002
+PROJ:
+  UNIT:     0000   # next: TEST-PROJ-UNIT-0001
+  CONTRACT: 0000
+TASK:
+  UNIT:     0000
+  CONTRACT: 0000
+TEAM:
+  UNIT:     0000
+  CONTRACT: 0000
+DASH:
+  UNIT:     0000
+  CONTRACT: 0000

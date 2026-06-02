@@ -1,0 +1,41 @@
+name: Traceability Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-traceability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check PR has required fields
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          MISSING=()
+          echo "$PR_BODY" | grep -q "Requirement.*REQ-" || MISSING+=("Requirement ID")
+          echo "$PR_BODY" | grep -q "Design.*DES-"      || MISSING+=("Design ID")
+          echo "$PR_BODY" | grep -q "Component.*CMP-"   || MISSING+=("Component ID")
+          echo "$PR_BODY" | grep -q "Tests.*TEST-"       || MISSING+=("Test ID")
+          if [ ${#MISSING[@]} -gt 0 ]; then
+            echo "❌ PR is missing traceability fields: ${MISSING[*]}"
+            echo "Every PR must include Requirement, Design, Component, and Test IDs."
+            exit 1
+          fi
+          echo "✓ All traceability fields present"
+
+      - name: Check REQ exists in specs
+        run: |
+          REQ=$(echo "${{ github.event.pull_request.body }}" \
+            | grep "Requirement" | grep -oP "REQ-[A-Z]+-[0-9]+")
+          if [ -z "$REQ" ]; then
+            echo "❌ Could not parse REQ ID from PR body"
+            exit 1
+          fi
+          FILE=".codex/specs/requirements/${REQ}.md"
+          if [ ! -f "$FILE" ]; then
+            echo "❌ Requirement file not found: $FILE"
+            exit 1
+          fi
+          echo "✓ Requirement file exists: $FILE"

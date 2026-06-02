@@ -1,0 +1,52 @@
+# TaskFlow — Traceability Matrix
+# Every work item must appear here.
+# Updated automatically by GitHub Actions on every merge.
+# Manual updates: only to add new IDs or change status.
+
+REQ-AUTH-0001:
+  title: User authentication with JWT
+  status: in-progress
+  owner: developer-1
+  designs:
+    - DES-AUTH-0001
+  components:
+    - CMP-AUTH-REGISTER-HANDLER
+    - CMP-AUTH-LOGIN-HANDLER
+    - CMP-AUTH-TOKEN-VALIDATOR
+    - CMP-AUTH-REFRESH-HANDLER
+  tests:
+    - TEST-AUTH-UNIT-0001
+    - TEST-AUTH-CONTRACT-0001
+    - TEST-AUTH-SECURITY-0001
+
+REQ-PROJ-0001:
+  title: Project creation and management
+  status: approved
+  owner: developer-1
+  designs: []
+  components: []
+  tests: []
+
+REQ-TASK-0001:
+  title: Task CRUD
+  status: approved
+  owner: developer-2
+  designs: []
+  components: []
+  tests: []
+
+REQ-TEAM-0001:
+  title: Team member management
+  status: approved
+  owner: developer-2
+  designs: []
+  components: []
+  tests: []
+
+REQ-DASH-0001:
+  title: Dashboard summary API
+  status: approved
+  owner: developer-2
+  designs: []
+  components: []
+  tests: []
