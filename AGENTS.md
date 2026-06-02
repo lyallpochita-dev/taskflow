@@ -48,3 +48,14 @@ Every Codex response must end with:
   Tests       : TEST-AREA-TYPE-NUMBER
   Files changed: list
   Checks run  : list
+
+
+## Definition of Done
+A task is done when ALL four conditions are true:
+  1. PR is merged to main
+  2. All tests pass (unit + contract)
+  3. GitHub Issue is closed
+  4. Lead has approved and merged the PR
+
+Codex must not declare a task complete until all four are satisfied.
+If any condition is not met, flag it — do not proceed.
